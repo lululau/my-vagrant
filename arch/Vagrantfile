@@ -11,7 +11,8 @@ Vagrant.configure('2') do |config|
   # config.vm.network "public_network", :bridge => 'en0: Wi-Fi (Wireless)'
   host_ip = `ifconfig en0 | grep "inet " | awk '{print $2}'`.chomp
   ip = host_ip.sub(/\.\d+$/, '.123')
-  config.vm.network "public_network", :bridge => 'en0: Wi-Fi (Wireless)', ip: ip
+  # config.vm.network "public_network", :bridge => 'en0: Wi-Fi (Wireless)', ip: ip
+  config.vm.network "public_network", :bridge => 'en0: Wi-Fi', ip: ip
   # config.vm.provision 'shell', path: './scripts/main.sh'
   config.vm.synced_folder '.', '/home/vagrant/sync', type: 'virtualbox'
   config.vm.provision 'shell', inline: 'sudo sysctl -p'
